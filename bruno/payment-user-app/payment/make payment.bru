@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: http://localhost:8081/payment/api/v1/users/payment/1
+  url: http://localhost:8081/payment/api/v1/users/product/1?amount=10000
   body: none
   auth: inherit
+}
+
+params:query {
+  amount: 10000
 }
 
 settings {
