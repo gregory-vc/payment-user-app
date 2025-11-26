@@ -10,7 +10,7 @@ import task5.app.web.dto.ProductResponse;
 import task5.app.web.mapper.ProductMapper;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/v1/products")
 public class ProductController {
     private final ProductService productService;
     private final ProductMapper productMapper;

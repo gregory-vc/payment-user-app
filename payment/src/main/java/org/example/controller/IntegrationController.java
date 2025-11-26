@@ -1,16 +1,12 @@
 package org.example.controller;
 
-import org.example.dto.integrations.ExecutorErrorResponseDto;
-import org.example.dto.integrations.ExecutorResponseDto;
-import org.example.dto.integrations.IntegrationErrorResponseDto;
+import org.example.dto.integrations.*;
 import org.example.service.IntegrationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/api/v1/integrations")
+@RequestMapping("/api/v1/users")
 public class IntegrationController {
 
     private final IntegrationService integrationService;
@@ -19,13 +15,13 @@ public class IntegrationController {
         this.integrationService = integrationService;
     }
 
-    @GetMapping("executor/payments/execute")
-    public ExecutorResponseDto executorHealthCheck() {
-        return integrationService.executePayment();
+    @GetMapping("/{id}")
+    public UserDto getUser(@PathVariable("id") long id) {
+        return integrationService.getUser(id);
     }
 
-    @GetMapping("executor/payments/execute/500")
-    public ExecutorResponseDto executorHealthCheck500() {
-        return integrationService.executePaymentError500();
+    @PostMapping("/payment/{id}")
+    public ProductDto makePayment(@PathVariable("id") long id) {
+        return integrationService.makePayment(id);
     }
 }

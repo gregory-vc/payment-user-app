@@ -10,8 +10,8 @@ spring:
 integrations:
   clients:
     payments-executor-client:
-      url: http://localhost:8089/executor
+      url: http://localhost:8082/product
       connect-timeout: 5s
       read-timeout: 10s
-      execute-url: /payments/execute
-      execute-url-500: /payments/execute/500
+      user-url: /api/v1/users/
+      product-url: /api/v1/products/

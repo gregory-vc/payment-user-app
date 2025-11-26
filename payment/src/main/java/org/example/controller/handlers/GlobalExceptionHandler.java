@@ -1,6 +1,5 @@
 package org.example.controller.handlers;
 
-import org.example.dto.ErrorResponseDto;
 import org.example.dto.integrations.IntegrationErrorResponseDto;
 import org.example.exception.IntegrationException;
 import org.springframework.http.HttpStatus;
@@ -10,12 +9,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ErrorResponseDto handleIllegalArgumentException(IllegalArgumentException illegalArgumentException) {
-        return new ErrorResponseDto(illegalArgumentException.getMessage());
-    }
 
     @ResponseStatus(HttpStatus.BAD_GATEWAY)
     @ExceptionHandler(IntegrationException.class)

@@ -33,5 +33,10 @@ public class RestTemplateErrorHandler implements ResponseErrorHandler {
             ExecutorErrorResponseDto executorErrorResponseDto = objectMapper.readValue(response.getBody(), ExecutorErrorResponseDto.class);
             throw new IntegrationException("Внешний сервис вернул ошибку", executorErrorResponseDto.message());
         }
+
+        if (response.getStatusCode().is4xxClientError()) {
+            ExecutorErrorResponseDto executorErrorResponseDto = objectMapper.readValue(response.getBody(), ExecutorErrorResponseDto.class);
+            throw new IntegrationException("Объект не найден", executorErrorResponseDto.message());
+        }
     }
 }
