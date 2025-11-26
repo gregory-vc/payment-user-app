@@ -1,10 +1,13 @@
 server:
+  port: 8082
   servlet:
     context-path: /product
 
 spring:
   application:
     name: product
+  thymeleaf:
+    check-template-location: false
   datasource:
     url: jdbc:postgresql://localhost:5432/payment_db
     username: payment_user
@@ -17,6 +20,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+    open-in-view: false
   flyway:
     enabled: true
     url: ${spring.datasource.url}
