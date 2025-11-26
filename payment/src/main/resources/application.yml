@@ -6,24 +6,6 @@ server:
 spring:
   application:
     name: payment
-  datasource:
-    url: jdbc:postgresql://localhost:5432/payment_db
-    username: payment_user
-    password: payment_pass
-    driver-class-name: org.postgresql.Driver
-    hikari:
-      minimum-idle: 2
-      max-lifetime: 1800000
-      validation-timeout: 5000
-  jpa:
-    hibernate:
-      ddl-auto: validate
-  flyway:
-    enabled: true
-    url: ${spring.datasource.url}
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    locations: classpath:db/migration
 
 integrations:
   clients:
